@@ -18,4 +18,10 @@
     <ProjectReference Include="..\Trivia\Trivia.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Utilities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utilities\" />
+  </ItemGroup>
 </Project>

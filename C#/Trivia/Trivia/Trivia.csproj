@@ -5,4 +5,12 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Ports\" />
+    <None Remove="Implementations\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Ports\" />
+    <Folder Include="Implementations\" />
+  </ItemGroup>
 </Project>

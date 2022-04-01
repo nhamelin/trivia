@@ -1,26 +1,33 @@
-﻿using System;
+﻿using Trivia.Implementations;
+using Trivia.Ports;
 
 namespace Trivia
 {
     public class GameRunner
     {
-        private static bool _notAWinner;
+        private readonly IRandomNumberGenerator _rng;
+        private readonly IOutput _output;
+        private bool _notAWinner;
 
-        public static void Main(string[] args)
+        public GameRunner(IRandomNumberGenerator rng, IOutput output)
         {
-            var aGame = new Game();
+            _rng = rng;
+            _output = output;
+        }
+
+        public void Play()
+        {
+            var aGame = new Game(_output);
 
             aGame.Add("Chet");
             aGame.Add("Pat");
             aGame.Add("Sue");
 
-            var rand = new Random();
-
             do
             {
-                aGame.Roll(rand.Next(5) + 1);
+                aGame.Roll(_rng.Next(5) + 1);
 
-                if (rand.Next(9) == 7)
+                if (_rng.Next(9) == 7)
                 {
                     _notAWinner = aGame.WrongAnswer();
                 }
